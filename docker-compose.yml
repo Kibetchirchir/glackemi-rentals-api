@@ -1,0 +1,28 @@
+services:
+  api:
+    build: .
+    command: gunicorn --bind 0.0.0.0:8000 glackemi_rental.wsgi:application
+    ports:
+      - "8000:8000"
+    volumes:
+      - glackemi_rental:/app/data
+      - ../glackemi_rentals_api:/app
+    depends_on:
+      - db
+  
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: testingtesting
+      POSTGRES_DB: glackemi_rental
+      POSTGRES_USER: glackemi
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ../postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  glackemi_rental:
+
