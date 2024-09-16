@@ -4,6 +4,7 @@ services:
     command: gunicorn --bind 0.0.0.0:8000 glackemi_rental.wsgi:application
     ports:
       - "8000:8000"
+    env_file: ./glackemi_environmental_variables
     volumes:
       - glackemi_rental:/app/data
       - ../glackemi_rentals_api:/app
