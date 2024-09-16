@@ -23,12 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("API_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ.get("ENVIRONMENT") == ApplicationEnvironment.DEVELOPMENT.value else False
+DEBUG = True if os.environ.get("API_ENVIRONMENT") == ApplicationEnvironment.DEVELOPMENT.value else False
 
-ALLOWED_HOSTS = ['*']
+# this should be saved on the env file as an array eg ['*']
+ALLOWED_HOSTS = os.environ.get("API_ALLOWED_HOSTS", ['*'])
 
 
 # Application definition
@@ -79,11 +80,11 @@ WSGI_APPLICATION = "glackemi_rental.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DB_NAME"),
-        "USER": os.environ.get("DB_USER"),
-        "PASSWORD": os.environ.get("DB_PASSWORD"),
-        "HOST": os.environ.get("DB_HOST"),
-        "PORT": os.environ.get("DB_PORT")
+        "NAME": os.environ.get("API_DB_NAME"),
+        "USER": os.environ.get("API_DB_USER"),
+        "PASSWORD": os.environ.get("API_DB_PASSWORD"),
+        "HOST": os.environ.get("API_DB_HOST"),
+        "PORT": os.environ.get("API_DB_PORT")
     }
 }
 
