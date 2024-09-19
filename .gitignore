@@ -90,7 +90,7 @@ db.sqlite3
 glackemi_environmental_variables
 
 ### vscode ###
-vscode/
+.vscode/
 
 ## venv ##
 bin/
