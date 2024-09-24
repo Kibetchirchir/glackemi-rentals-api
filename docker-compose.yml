@@ -6,7 +6,7 @@ services:
       - "8000:8000"
     env_file: ./glackemi_environmental_variables
     volumes:
-      - glackemi_rental:/app/data
+      - glackemi_rental:/app/staticfiles
       - ../glackemi_rentals_api:/app
     depends_on:
       - db
